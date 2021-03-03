@@ -3,7 +3,7 @@ const Contest = require('../models/contestSchema');
 const contestDetails = (req, res, next) => {
     Contest.aggregate([
         {
-            $match: {"start_date": {$gte: new Date("2021-02-28 18:30:00.000Z")}}
+            $match: {"start_date": {$gte: new Date("2021-02-28 00:00:00.000Z")}}
         },
         {
                 $project:
@@ -132,7 +132,16 @@ const contestDetails = (req, res, next) => {
                         }
         },
         {
-                $group: {_id: "$users.full_name", total_views: {"$sum": "$users.views"}, entries: {"$sum": 1}, language: {"$push": {lang: "$users.language"}}}
+                $group: {_id: "$users.language", users: {"$push": {"details": {name: "$users.full_name", views: "$users.views", lang: "$users.language"}}}}
+        },
+        {
+                $unwind: "$users"
+        },
+        {
+                $project: {"_id": 0, "users": 1}
+        },
+        {
+                $group: {_id: {name: "$users.details.name", lang: "$users.details.lang"}, total_views: {"$sum": "$users.details.views"}, entries: {"$sum": 1}}
         }
     ], (err, data) => {
         if(err) {
