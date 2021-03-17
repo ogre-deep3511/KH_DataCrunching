@@ -13,6 +13,7 @@ const languageWisePaidSeries = require('../controllers/paidSeriesByLangControlle
 const subscribersDetails = require('../controllers/subscribersController');
 const ashaMamSeries = require('../controllers/ashaMamSeriesController');
 const contestDetails = require('../controllers/contestDetailsController');
+const authorWiseTotalViews = require('../controllers/authorWiseTotalViewsController');
 
 /* ---------------------------------------------------------------------------------------------------------- */
 /* -------------------------------------------For User's Details--------------------------------------------- */
@@ -69,5 +70,7 @@ router.get('/asha-mam', ashaMamSeries.ashaMamSeries);
 router.get('/contest-details', contestDetails.contestDetails);
 
 /* ------------------------------------------------------------------------------------------------------------ */
+
+router.get('/author-wise-total-views', authorWiseTotalViews.authorWiseTotalViews);
 
 module.exports = router;

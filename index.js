@@ -38,6 +38,8 @@ const Asha = require('./routes/route');
 
 const contestDetails = require('./routes/route');
 
+const AuthorWiseTotalViews = require('./routes/route');
+
 // Setting environment variable
 const port = process.env.PORT || 8888;
 
@@ -82,7 +84,8 @@ app.use('/api', OriyaUsersDetails);
 app.use('/api', SeriesSubscription);
 app.use('/api', SubscriberDetails);
 app.use('/api', Asha);
-app.use('/api', contestDetails)
+app.use('/api', contestDetails);
+app.use('/api', AuthorWiseTotalViews);
 
 app.listen(port, () => {
     console.log("Server started on port: " + port + "!!!");
