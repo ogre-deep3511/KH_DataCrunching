@@ -71,6 +71,6 @@ router.get('/contest-details', contestDetails.contestDetails);
 
 /* ------------------------------------------------------------------------------------------------------------ */
 
-router.get('/author-wise-total-views', authorWiseTotalViews.authorWiseTotalViews);
+router.post('/author-wise-total-views', authorWiseTotalViews.authorWiseTotalViews);
 
 module.exports = router;

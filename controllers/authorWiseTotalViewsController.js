@@ -1,10 +1,15 @@
 const Kahanies = require('../models/kahaniesSchema');
 
 const authorWiseTotalViews = (req, res, next) => {
-    let user_id = req.body.id;
+    let user_id = req.query.id;
+    // console.log(req.query);
+    // console.log(user_id);
     Kahanies.aggregate([
         {
-            $group: {_id: `${user_id}`, total_views: {"$sum": "$views_count"}}
+            $match: {author_id: `${user_id}`}
+        },
+        {
+            $group: {_id: "$author_id", total_views: {"$sum": "$views_count"}}
         },
         {
             $lookup: 
