@@ -41,7 +41,7 @@ const contestDetails = require('./routes/route');
 const AuthorWiseTotalViews = require('./routes/route');
 
 // Setting environment variable
-const port = process.env.PORT || 8888;
+const port = process.env.PORT || 8080;
 
 app.use(bodyParser.urlencoded({extended: true}));
 app.use(bodyParser.json());
