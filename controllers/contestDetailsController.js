@@ -3,7 +3,7 @@ const Contest = require('../models/contestSchema');
 const contestDetails = (req, res, next) => {
     Contest.aggregate([
         {
-            $match: {"start_date": {$gte: new Date("2021-02-28 00:00:00.000Z")}}
+                $match: {"end_date": {$gte: new Date}}
         },
         {
                 $project:
